@@ -2,7 +2,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Cart from "./Cart";
-import SearchBar from "./Searchbar";
+import SearchBar from "./Sbar";
 
 const navigation = [
   { name: "About", href: "#", current: false },
