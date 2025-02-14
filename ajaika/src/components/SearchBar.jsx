@@ -35,34 +35,24 @@ export default function SearchBar({ products, pid, setPid }) {
 
   return (
     <div className="relative flex items-center w-full">
-      <div
-        className={`relative bg-white p-2 rounded-full flex items-center transition-all duration-300 ${
-          expanded ? "w-64" : "w-40"
-        } border border-gray-300 shadow-sm`}
-      >
-        <Search
-          className="text-gray-600 cursor-pointer mx-2"
-          size={20}
-          onClick={() => setExpanded(!expanded)}
-        />
+      <div className="relative bg-white p-2 rounded-full flex items-center transition-all duration-300 border border-gray-300 shadow-sm w-full sm:w-64">
+        <Search className="text-gray-600 cursor-pointer mx-2" size={20} />
         <input
           type="text"
-          className="bg-transparent outline-none text-gray-900 w-full placeholder-gray-500 transition-all"
+          className="bg-transparent outline-none text-gray-900 w-full placeholder-gray-500 transition-all min-w-[150px]"
           placeholder="Search..."
           value={query}
           onChange={handleSearch}
-          onBlur={() => setExpanded(false)}
+          onFocus={() => setExpanded(true)}
         />
       </div>
 
-      {query && filteredItems.length > 0 && (
-        <ul className="absolute top-full left-0 mt-2 w-64 bg-white text-gray-900 rounded-md shadow-lg border border-gray-300 z-10">
+      {expanded && query && filteredItems.length > 0 && (
+        <ul className="absolute top-full left-0 mt-2 w-full sm:w-64 bg-white text-gray-900 rounded-md shadow-lg border border-gray-300 z-10 max-h-40 overflow-y-auto">
           {filteredItems.map((item, index) => (
             <li
               key={index}
-              className={`px-4 py-2 ${
-                item.id ? "hover:bg-gray-200 cursor-pointer" : "text-gray-500 cursor-default"
-              }`}
+              className={`px-4 py-2 ${item.id ? "hover:bg-gray-200 cursor-pointer" : "text-gray-500 cursor-default"}`}
               onClick={() => item.id && handleSelect(item)}
             >
               {item.name}
