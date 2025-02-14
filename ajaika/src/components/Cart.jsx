@@ -84,7 +84,7 @@ export default function Cart({ open, setOpen, cartItems, products }) {
           <div className="p-4 border-t bg-gray-100">
             <div className="flex justify-between text-lg font-semibold">
               <span>Total:</span>
-              <span>₹{totalPrice.toFixed(2)}</span>
+              <span>${totalPrice.toFixed(2)}</span>
             </div>
             <button className="w-full mt-4 bg-[#ffb800] text-white py-2 rounded-lg hover:bg-[#e69e00]">
               Checkout
