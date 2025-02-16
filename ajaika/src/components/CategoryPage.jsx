@@ -8,7 +8,7 @@ export default function CategoryPage({ products }) {
   const navigate = useNavigate();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Show 6 items per page
+  const itemsPerPage = 6; 
 
   useEffect(() => {
     let filtered = products;
@@ -18,7 +18,6 @@ export default function CategoryPage({ products }) {
         product.title.toLowerCase().includes(query.toLowerCase())
       );
     } else if (category) {
-      // Convert hyphenated category back to original format
       const normalizedCategory = category.replace(/-/g, " ");
       filtered = products.filter((product) => 
         product.category.toLowerCase() === normalizedCategory.toLowerCase()
@@ -26,7 +25,7 @@ export default function CategoryPage({ products }) {
     }
 
     setFilteredProducts(filtered);
-    setCurrentPage(1); // Reset to page 1 when search/category changes
+    setCurrentPage(1);
   }, [query, category, products]);
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
@@ -41,7 +40,6 @@ export default function CategoryPage({ products }) {
 
       {displayedProducts.length > 0 ? (
         <>
-          {/* Grid Layout: 3 columns for desktop, 2 for medium screens, 1 for mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {displayedProducts.map((product) => (
               <div
@@ -60,7 +58,6 @@ export default function CategoryPage({ products }) {
             ))}
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-6 space-x-2">
               {Array.from({ length: totalPages }, (_, index) => (

@@ -36,7 +36,6 @@ export default function ProductList({ cartItems, setCartItems, products }) {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         {Object.entries(categorizedProducts).map(([category, categoryProducts]) => (
           <div key={category} className="mb-12">
-            {/* Category Heading with "Show All" Link */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 capitalize">{category}</h2>
               <button
@@ -46,8 +45,6 @@ export default function ProductList({ cartItems, setCartItems, products }) {
                 Show All →
               </button>
             </div>
-
-            {/* Display Limited Items Per Category */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {categoryProducts.slice(0, itemsPerCategory).map((product) => {
                 const { quantity } = getCartItem(product.id);
@@ -58,7 +55,6 @@ export default function ProductList({ cartItems, setCartItems, products }) {
                     className="relative group cursor-pointer transition-transform duration-300 transform hover:scale-105"
                     onClick={() => navigate(`/product/${product.title.replace(/\s+/g, "-").toLowerCase()}`)}
                   >
-                    {/* Product Image (Ensuring Proper Fit) */}
                     <div className="w-full h-64 bg-gray-100 rounded-lg overflow-hidden flex justify-center">
                       <img
                         src={product.image}
@@ -67,13 +63,12 @@ export default function ProductList({ cartItems, setCartItems, products }) {
                       />
                     </div>
 
-                    {/* Product Info */}
                     <div className="mt-3 flex justify-between items-center">
                       <h3 className="text-lg font-medium text-gray-900 truncate w-3/4">{product.title}</h3>
                       <p className="text-lg font-semibold text-gray-700">{`$${product.price}`}</p>
                     </div>
 
-                    {/* Add to Cart Section */}
+
                     <div className="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 p-3 hidden group-hover:flex flex-col items-center gap-2">
                       {quantity > 0 ? (
                         <div className="flex items-center">
