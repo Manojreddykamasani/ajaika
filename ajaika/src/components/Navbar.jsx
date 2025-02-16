@@ -5,7 +5,8 @@ import Cart from "./Cart";
 import SearchBar from "./Sbar";
 
 const navigation = [
-  { name: "About", href: "#", current: false },
+  { name: "Home", href: "/", current: false },
+  {name: "About", href: "#", current: false },
   { name: "Partnerships", href: "#", current: false },
   { name: "Contact", href: "#", current: false },
 ];
